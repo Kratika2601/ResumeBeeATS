@@ -1,3 +1,23 @@
+#Home {
+        background-image: url('R.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+}
+#about{
+    background-image: url('R.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -24,9 +44,9 @@ nav {
     top: 0px;
     left: 0;
     width: 100%;
-    height: 50px;
+    height: 40px;
     padding: 20px;
-    background-color: #000000;
+    background-color: #2b2b2b;
     border-bottom: 1px solid #000000;
     z-index: 1000;
 }
@@ -52,7 +72,7 @@ nav ul li a {
 }
 
 main {
-    padding: 2rem;
+    padding-top: 50px; 
 }
 
 main section {
