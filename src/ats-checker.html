@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        #logo {
+            padding: 10px;
+            height: 50px;
+            width: 100px;
+            margin-left: 1rem;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .image {
+            width: 40%;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .content {
+            width: 60%;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #ats-checker {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #ats-checker h1 {
+            font-size: xx-large;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #ats-checker form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #ats-checker label {
+            font-size: x-large;
+            margin-bottom: 5px;
+        }
+
+        #ats-checker input[type="file"] {
+            margin-bottom: 10px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #ats-checker button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #ats-checker #result {
+            margin-top: 20px;
+            color: green;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#home">
+            <img src="whittplogo.png" alt="Company Logo" id="logo">
+        </a>
+        <h1>score my resume</h1>
+    </header>
+    <div class="container">
+        <img src="9.png" alt="Image" class="image">
+        <div class="content">
+            <main>
+                <section id="scanner">
+                    <h2>Free Scanner with ATS</h2>
+                    <p>Upload and optimize your resume on our free scanner with Applicant Tracking System (ATS) to get
+                        into more jobs.</p>
+                </section>
+                <section id="ats-checker">
+                    <h1>ATS Checker</h1>
+                    <form action="#">
+                        <label for="resume">Upload your resume:</label>
+                        <input type="file" id="resume" name="resume" required>
+                        <button type="submit">Check</button>
+                    </form>
+                    <p id="result"></p>
+                </section>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright © 2024 ATS Checker. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
