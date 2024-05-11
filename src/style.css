@@ -1,43 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 #Home {
-        background-image: url('bg2.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: left;
-        flex-direction: column;
-        color: #fff;
-}
-.logo2 {
-    width: 700px;
-    height: 250px;
-    justify-content: left;
-    padding-left: 30px;
-}
-.gifi{
-    width: 500px;
-    height: 500px;
-    padding-left: 150px;
-    padding-top: 20px;
-}
-#Home p{
-    margin-left: 30px;
-}
-#Home h1{
-    margin-left: 30px;
-}
-#about{
     background-image: url('bg2.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
     color: #fff;
 }
+
+.logo2 {
+    width: 700px;
+    height: 250px;
+    justify-content: left;
+    padding-left: 30px;
+}
+
+#Home p {
+    margin-left: 30px;
+}
+
+#Home h1 {
+    margin-left: 30px;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -48,7 +41,8 @@ header {
     background-color: #333;
     color: #fff;
     display: flex;
-    justify-content: flex-start; /* Align the logo and navigation links to the left */
+    justify-content: flex-start;
+    /* Align the logo and navigation links to the left */
     align-items: center;
     padding: 1rem;
 }
@@ -56,7 +50,8 @@ header {
 #logo {
     height: 50px;
     margin-right: 1rem;
-    margin-left: 0; /* Remove the left margin */
+    margin-left: 0;
+    /* Remove the left margin */
 }
 
 nav {
@@ -90,19 +85,49 @@ nav ul li a {
     text-decoration: none;
 }
 
-main section h2 {
-    color: #333;
-    margin-bottom: 1rem;
+nav li a:hover {
+    color: grey;
 }
 
-main section ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#features{
+    background-image: url('bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    
 }
-
-main section ul li {
-    margin-bottom: 0.5rem;
+.features-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.features-right ul{
+    font-size: x-large;
+    font-style: italic;
+    color: #ffffff;
+    list-style-position: inside;
+    padding-left: 0;
+}
+.features-right li{
+    margin-bottom: 20px;
+}
+.right-title h2{
+    color: #0ef;
+    font-size: 80px;
+    font-style: oblique;
+    margin-bottom: 10px;
+}
+.right-title hr{
+    border: none;
+    width: 250px;
+    height: 5px;
+    background-color: #0ef;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.features-left img{
+    width: 500px;
+    height: 600px;
 }
 
 footer {
