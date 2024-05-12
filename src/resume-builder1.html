@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="resume-builder1.css" />
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 6% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .center-svg {
+        display: block;
+        margin: auto;
+        width: 100%;
+      }
+
+      .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .card {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#home">
+          <img src="../src/whittplogo.png" alt="Company Logo" id="logo" />
+        </a>
+      </nav>
+    </header>
+    <h1>Resume Builder</h1>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="/submit-resume" method="post">
+          <label for="name">Name:</label><br />
+          <input type="text" id="name" name="name" /><br />
+          <label for="position">Position:</label><br />
+          <input type="text" id="position" name="position" /><br />
+          <label for="education">Education:</label><br />
+          <textarea id="education" name="education"></textarea><br />
+          <label for="experience">Experience:</label><br />
+          <textarea id="experience" name="experience"></textarea><br />
+          <label for="skills">Skills:</label><br />
+          <textarea id="skills" name="skills"></textarea><br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card" onclick="openModal()">
+        <h2>Create a new resume</h2>
+        <p>Start with a blank paper. We’ll guide you step by step.</p>
+        <img src="./createaResume.svg" alt="resumeImage"/>
+      </div>
+
+      <div class="card" onclick="openModal()">
+        <h2>Upload your existing</h2>
+        <p>Don’t start from scratch. Use our tool to improve it.</p>
+        <img src="./upload.svg" alt="uploadImage"/>
+      </div>
+    </div>
+
+    <script>
+      var modal = document.getElementById("myModal");
+      var span = document.getElementsByClassName("close")[0];
+
+      function openModal() {
+        modal.style.display = "block";
+      }
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
