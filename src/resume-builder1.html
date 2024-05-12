@@ -4,6 +4,49 @@
     <title>Resume Builder</title>
     <link rel="stylesheet" href="resume-builder1.css" />
     <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      header {
+        color: #fff;
+        padding: 20px;
+        width: 100%;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin-right: 20px;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 40px;
+      }
+
       .modal {
         display: none;
         position: fixed;
@@ -17,13 +60,12 @@
       }
 
       .modal-content {
-        background-color: #fefefe;
+        background-color: #fff;
         margin: 6% auto;
         padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 600px;
         border-radius: 10px;
+        max-width: 600px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
       }
 
       .close {
@@ -40,27 +82,105 @@
         cursor: pointer;
       }
 
-      .center-svg {
-        display: block;
-        margin: auto;
-        width: 100%;
-      }
-
       .card-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 20px;
+        margin-top: 40px;
       }
 
       .card {
-        background-color: #f9f9f9;
+        background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        margin: 20px;
+        width: 300px;
         text-align: center;
-        flex: 1;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .card h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .card p {
+        font-size: 16px;
+        color: #666;
+      }
+
+      input[type="submit"] {
+        background-color: #1976d2;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #1565c0;
+      }
+
+      .big-card {
+        display: none; 
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 40px auto;
+        max-width: 800px;
+      }
+
+      .big-card h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .big-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .big-card p,
+      .big-card ul {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"],
+      textarea {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .card-container {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .card {
+          width: 80%;
+        }
       }
     </style>
   </head>
@@ -68,25 +188,95 @@
     <header>
       <nav>
         <a href="#home">
-          <img src="../src/whittplogo.png" alt="Company Logo" id="logo" />
+          <img src="logo2.png" alt="Company Logo" id="logo" />
         </a>
       </nav>
     </header>
-    <h1>Resume Builder</h1>
+
+    <h1 style="color: aliceblue;">Resume Builder</h1>
+
+    <!-- Modal for entering resume details -->
     <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <form action="/submit-resume" method="post">
+        <form id="resumeForm" onsubmit="return submitForm()">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name" /><br />
+          <input type="text" id="name" name="name" required /><br />
+          <label for="email">Email:</label><br />
+          <input type="text" id="email" name="email" required /><br />
+
+          <label for="phone">Phone:</label><br />
+          <input type="text" id="phone" name="phone" required /><br />
+
+          <label for="bio">Bio:</label><br />
+          <textarea id="bio" name="bio" required></textarea><br />
+
+          <label for="location">Location:</label><br />
+          <input type="text" id="location" name="location" required /><br />
+
           <label for="position">Position:</label><br />
-          <input type="text" id="position" name="position" /><br />
-          <label for="education">Education:</label><br />
-          <textarea id="education" name="education"></textarea><br />
-          <label for="experience">Experience:</label><br />
-          <textarea id="experience" name="experience"></textarea><br />
+          <input type="text" id="position" name="position" required /><br />
+
+          <h3>Education:</h3>
+          <label for="education-school">School/University:</label><br />
+          <input
+            type="text"
+            id="education-school"
+            name="education-school"
+            required
+          /><br />
+          <label for="education-degree">Degree:</label><br />
+          <input
+            type="text"
+            id="education-degree"
+            name="education-degree"
+            required
+          /><br />
+          <label for="education-year">Year of Graduation:</label><br />
+          <input
+            type="text"
+            id="education-year"
+            name="education-year"
+            required
+          /><br />
+
+          <h3>Experience:</h3>
+          <label for="experience-company">Company:</label><br />
+          <input
+            type="text"
+            id="experience-company"
+            name="experience-company"
+            required
+          /><br />
+          <label for="experience-position">Position:</label><br />
+          <input
+            type="text"
+            id="experience-position"
+            name="experience-position"
+            required
+          /><br />
+          <label for="experience-duration">Duration:</label><br />
+          <input
+            type="text"
+            id="experience-duration"
+            name="experience-duration"
+            required
+          /><br />
+          <label for="experience-description">Description:</label><br />
+          <textarea
+            id="experience-description"
+            name="experience-description"
+            required
+          ></textarea
+          ><br />
+          <small>Separate each bullet point with a new line</small><br />
+          <br />
+
+          <h3>Skills:</h3>
           <label for="skills">Skills:</label><br />
-          <textarea id="skills" name="skills"></textarea><br />
+          <textarea id="skills" name="skills" required></textarea><br />
+
+
           <input type="submit" value="Submit" />
         </form>
       </div>
@@ -96,14 +286,35 @@
       <div class="card" onclick="openModal()">
         <h2>Create a new resume</h2>
         <p>Start with a blank paper. We’ll guide you step by step.</p>
-        <img src="./createaResume.svg" alt="resumeImage"/>
+        <img src="./createaResume.svg" alt="resumeImage" />
       </div>
 
       <div class="card" onclick="openModal()">
         <h2>Upload your existing</h2>
         <p>Don’t start from scratch. Use our tool to improve it.</p>
-        <img src="./upload.svg" alt="uploadImage"/>
+        <img src="./upload.svg" alt="uploadImage" />
       </div>
+    </div>
+
+    <!-- Display the filled resume template -->
+    <div class="big-card" id="resumeTemplate">
+      <h2 id="templateName"></h2>
+      <p>Email: <span id="templateEmail"></span></p>
+      <p>Phone: <span id="templatePhone"></span></p>
+      <p>Bio: <span id="templateBio"></span></p>
+      <p>Location: <span id="templateLocation"></span></p>
+
+      <h3>Position:</h3>
+      <p id="templatePosition"></p>
+
+      <h3>Education:</h3>
+      <ul id="templateEducation"></ul>
+
+      <h3>Experience:</h3>
+      <ul id="templateExperience"></ul>
+
+      <h3>Skills:</h3>
+      <ul id="templateSkills"></ul>
     </div>
 
     <script>
@@ -123,6 +334,69 @@
           modal.style.display = "none";
         }
       };
+
+      function submitForm() {
+        var formData = new FormData(document.getElementById("resumeForm"));
+
+        // Fill the template with form data
+        document.getElementById("templateName").textContent =
+          formData.get("name");
+        document.getElementById("templatePosition").textContent =
+          formData.get("position");
+        document.getElementById("templateEmail").textContent =
+          formData.get("email");
+        document.getElementById("templatePhone").textContent =
+          formData.get("phone");
+        document.getElementById("templateBio").textContent =
+          formData.get("bio");
+        document.getElementById("templateLocation").textContent =
+          formData.get("location");
+
+        document.getElementById("resumeTemplate").style.display = "block"; 
+        modal.style.display = "none";
+
+        // Education
+        var educationSchool = formData.get("education-school");
+        var educationDegree = formData.get("education-degree");
+        var educationYear = formData.get("education-year");
+        document.getElementById("templateEducation").innerHTML = `
+          <li><strong>${educationDegree}</strong> - ${educationSchool}, ${educationYear}</li>
+        `;
+        // Experience
+        var experienceCompany = formData.get("experience-company");
+        var experiencePosition = formData.get("experience-position");
+        var experienceDuration = formData.get("experience-duration");
+        var experienceDescription = formData.get("experience-description");
+        var descriptionBullets = experienceDescription.split("\n"); 
+        var descriptionHTML =
+          "<li><strong>" +
+          experiencePosition +
+          "</strong> - " +
+          experienceCompany +
+          " (" +
+          experienceDuration +
+          ")<ul>"; 
+        descriptionBullets.forEach(function (bullet) {
+          descriptionHTML += "<li>" + bullet + "</li>"; 
+        });
+        descriptionHTML += "</ul></li>"; 
+        document.getElementById("templateExperience").innerHTML =
+          descriptionHTML;
+
+        // Skills
+        document.getElementById(
+          "templateSkills"
+        ).innerHTML = `<li>${formData.get("skills")}</li>`;
+
+        // Show the filled template
+        document.getElementById("resumeTemplate").style.display = "block";
+
+        // Hide the modal
+        modal.style.display = "none";
+
+        // Prevent default form submission
+        return false;
+      }
     </script>
   </body>
 </html>
