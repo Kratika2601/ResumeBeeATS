@@ -1,5 +1,5 @@
 #container {
-    background-image: url(/src/home-background.jpg);
+    background-image: url(home-background.jpg);
     background-size: cover; 
     background-position: center;
     height: 100vh;
@@ -22,7 +22,7 @@
   }
 
   .button1 {
-    background-image: url("/src/imgsrc/11.png");
+    background-image: url("");
     color: #fff;
     padding: 10px 20px;
     border: none;
